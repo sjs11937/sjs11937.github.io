@@ -155,6 +155,45 @@ C:\cloud_engeneering\Java21_study\eclipse\workspace
   * Java API 역할
   - 개발자가 원하는 임의의 어플리케이션을 개발할 때 도움을 줄 수 있는 클래스 파일들이다. (압축해서 제공 : *.jar)
 
+4) Java API 메뉴얼 제공 ( Java API documentation )
+   
+     -html 문서형식으로 제공
+      https://docs.oracle.com/en/java/javase/21/docs/api/index.html
+
+      System.class https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/System.html
+
+5) 데이터 출력
+  - 데이터 외부로 출력하는 대상 3가지
+  (1) 모니터 ( 표준 출력 : standard output)
+  - 콘솔력 (console) 출력
+  (2) 파일
+  - output.txt
+  (3) 네트워크
+  - 채팅
+
+  - 표준 출력 : standard output 3가지
+
+  가. 새로운 라인 생성됨
+  System.out.println(값);
+
+  나. 새로운 라인 없이 출력됨
+  System.out.print(값);
+
+  다. 특정한 포맷(format) 형식으로 출력됨 ( 한 줄에 출력된다. )
+  System.out.println("포맷형식", 값, 값2, ...);
+
+  포맷형식      값
+  -----------------------------  
+  %s            문자열(반드시 "" 지정)  ex. "hello"
+  %c            문자 (반드시 ' ' 지정)  ex. '님', 'A'
+  %d            정수                   ex. 100
+  %f            실수                   ex. 3.14
+  %b(boolean)   논리값                  ex. true, false
+
+  출력 포맷 : 이름 : 홍길동, 나이 : 20, 키 : 184.3
+  System.out.printf("이름 : %s, 성별 : %c, 나이 : %d, 키: %f", "홍길동", '남', 20, 184.3);
+
+
 ==============================================================================================================
 * 괄호 3가지
 [] : 대괄호
