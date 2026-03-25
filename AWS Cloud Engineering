@@ -1,2 +1,20 @@
+26-03-25 수업 시작
+
+● 자바 bin 안에 ... 
 javac.exe  ( 컴파일 명령어, 컴파일러 (compiler) 라고 부른다)
 java.exe   ( 실행 명령어, 인터프리터 (interpreter) 라고 부른다)
+
+● 환경변수 설치
+형식 : key(name) = value
+
+가. JDK 홈디렉터리 설정
+  JAVA_HOME=C:\Program Files\Java\jdk-21.0.10
+
+나. 실행 명령어 경로 설정
+- PATH 환경변수에 설정
+
+  PATH=C:\Program Files\Java\jdk-21.0.10\bin; 원래있던 PATH 값
+
+환경변수 설정방법 : 
+  (윈도우 10 기준)  Window 시작 > 마우스 우클릭 > 시스템 > 고급시스템 설정 > 환경 변수
+  (윈도우 11 기준) 검색 > 시스템 환경변수 > 시스템 속성 
