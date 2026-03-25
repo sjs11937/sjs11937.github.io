@@ -84,5 +84,22 @@ OS (win, mac, linux)                           |
 
 H/W                                            |
 ==============================================================================================================
+● 개발 도구 (Eclipse 개발 도구)
+  - 압축프로그램 설치 필요 : 반디집, 알집
 
+1) 작업 디렉터리 생성
+  C:\cloud_engeneering\Java21_study\eclipse\workspace
 
+2) 실행
+eclipse.exe
+
+3) 작업 디렉터리
+C:\cloud_engeneering\Java21_study\eclipse\workspace
+
+4) 실행 후 확인
+  (1) 컴파일러 확인
+    window > preference > java > compiler 에서 21 확인
+  (2) JRE 확인 ( 최근 eclipse 는 자제적으로 ... ) 
+  window > preference > installed JREs > jdk21만 남기고 모두 삭제
+==============================================================================================================
+● 자바 프로젝트 생성 
