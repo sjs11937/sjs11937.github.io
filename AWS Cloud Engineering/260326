@@ -351,7 +351,7 @@ Git
    /tmp
 
    실습: 
-     $ mkdri temp
+     $ mkdir temp
      $ touch secrets.txt
 
      $ git add .
@@ -365,5 +365,99 @@ Git
      해결: git rm -r --cached .
 
      .gitignore 제공 사이트
-     나중에 eclips 또는 Intellij 또는 VSC 버전관리시 사용
+     나중에 eclipse 또는 Intellij 또는 VSC 버전관리시 사용
      https://www.toptal.com/developers/gitignore
+
+--------------------------------------------------------------------------
+9. 작업 되돌리기
+
+					  
+  작업디렉터리 ---------------------> 스테이지 ------------------------> 로컬저장소
+  hello.txt 수정                          <------------------------>
+                                           git reset --soft HEAD^|해시값 ( git commit 되돌리기 )
+		 
+           <-------------------------------------------------------->
+                          git reset --mixed HEAD^|해시값     ( git add 되돌리기 )
+
+        <-------------------------------------------------------->
+                          git reset --hard HEAD^|해시값      ( 작업디렉터리 수정전까지 되돌리기)
+
+  # 커밋이전 상태 되돌리기
+  git restore hello.txt          <== 작업디렉터리 작업 되돌리기
+  git restore --staged hello.txt <== git add 되돌리기
+
+  # 커밋이후 상태 되돌리기 ( 이전 커밋 히스토리 정보 삭제됨 )
+   git reset --soft HEAD^|해시값 ( git commit 되돌리기 )
+   git reset --mixed HEAD^|해시값     ( git add 되돌리기 )
+   git reset --hard HEAD^|해시값      ( 작업디렉터리 수정전까지 되돌리기)
+
+   실습:
+     $ rm -rf git_reset
+     $ mkdir git_reset
+     $ cd git_reset
+     $ git init
+     $ touch hello.txt
+     $ echo "hello" >> hello.txt
+     $ git add hello.txt
+     $ git commit -m "hello commit"
+
+     $ echo "hello2" >> hello.txt
+     $ git commit -am "hello2 commit"
+
+     $ echo "hello3" >> hello.txt
+     $ git commit -am "hello3 commit"
+
+     # hello.txt 파일에 hello3 문자열 추가까지 되돌리기 
+       즉 가장 마지막 커밋 삭제 
+     $ git reset --hard HEAD^ 
+
+     # git add 되돌리기 
+     $ git reset --mixed HEAD^  
+
+     $ git commit -am "hello2 commit" 
+
+     # git commit 되돌리기
+     $ git reset --soft HEAD^  
+
+   실행결과:
+       이전의 커밋정보가 삭제됨.
+       이전 작업의 히스토리가 안남음.
+ ---------------------------------------------------------
+  
+    # 커밋이후 상태 되돌리기 ( 이전 커밋 히스토리 정보 유지됨 )
+
+    문법:
+         git revert 해시값  # 기존 커밋 시점으로 가는것이 아니고  
+	                    새로운 커밋을 만들어서 기존 히스토리 유지
+			    새로운 커밋을 만드기 때문에 커밋 메시지 필요함.
+			    충돌이 발생될수도 있음.( 해결: 원하는 내용으로 바꾸고 저장)
+			    <<<<<<<<<<<< HEAD
+			    hello
+			    =====
+			    hello2
+			    >>>>>>>>>>>
+			    VS C 오픈됨
+    실습:
+ 
+     $ mkdir git_revert
+     $ cd git_revert
+     $ git init
+     $ touch hello.txt
+     $ echo "hello" >> hello.txt
+     $ git add hello.txt
+     $ git commit -m "hello commit"
+     $ echo "hello2" >> hello.txt
+     $ git commit -am "hello2 commit"
+
+     $ git revert d17308b 
+
+     $ git add .
+     $ git revert --continue # vsc 열림. 커밋 메시지 작성하고 파일저장.
+                              만약 vsc 안열리면  git config --global core.editor "code --wait" 다시 실행
+
+     $ git log --oneline
+        
+	final commit
+        hello2 commit
+        hello commit
+------------------------------------------------------------------------
